@@ -4,6 +4,7 @@ const project = new clickupCdk.ClickUpCdkConstructLibrary({
   author: 'DevOps Team',
   cdkVersion: '2.1.0',
   defaultReleaseBranch: 'main',
+  deps: ['multi-convention-namer'],
   devDeps: ['@time-loop/clickup-projen'],
 });
 project.synth();
