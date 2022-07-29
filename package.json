@@ -30,7 +30,7 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "DevOps Team",
+    "name": "ClickUp",
     "email": "devops@clickup.com",
     "organization": true
   },
@@ -79,7 +79,7 @@
     "node": ">= 14.18.0"
   },
   "main": "lib/index.js",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
