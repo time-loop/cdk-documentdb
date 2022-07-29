@@ -3,18 +3,18 @@ import { InstanceClass, InstanceSize, InstanceType, Vpc, SecurityGroup } from 'a
 import { Key } from 'aws-cdk-lib/aws-kms';
 import { Namer } from 'multi-convention-namer';
 
-import { DocumentDb } from '../src';
+import { DocumentDB } from '../src';
 
 export function getLogicalId(resource: Resource): string {
   return resource.stack.getLogicalId(resource.node.defaultChild as CfnElement);
 }
 
-describe('DocumentDb', () => {
+describe('DocumentDB', () => {
   describe('default', () => {
     const app = new App();
     const stack = new Stack(app, 'Stack');
     const vpc = new Vpc(stack, 'Vpc');
-    new DocumentDb(stack, new Namer(['test']), {
+    new DocumentDB(stack, new Namer(['test']), {
       vpc,
     });
     const template = assertions.Template.fromStack(stack);
@@ -68,31 +68,31 @@ describe('DocumentDb', () => {
     });
 
     it('backup is configurable', () => {
-      new DocumentDb(stack, new Namer(['test']), { backup: { retention: Duration.days(5) }, vpc });
+      new DocumentDB(stack, new Namer(['test']), { backup: { retention: Duration.days(5) }, vpc });
       const template = assertions.Template.fromStack(stack);
       template.hasResourceProperties('AWS::DocDB::DBCluster', { BackupRetentionPeriod: 5 });
     });
 
     it('dbClusterName is configurable', () => {
-      new DocumentDb(stack, new Namer(['test']), { dbClusterName: 'DifferentName', vpc });
+      new DocumentDB(stack, new Namer(['test']), { dbClusterName: 'DifferentName', vpc });
       const template = assertions.Template.fromStack(stack);
       template.hasResourceProperties('AWS::DocDB::DBCluster', { DBClusterIdentifier: 'DifferentName' });
     });
 
     it('deletionProtection is configurable', () => {
-      new DocumentDb(stack, new Namer(['test']), { deletionProtection: false, vpc });
+      new DocumentDB(stack, new Namer(['test']), { deletionProtection: false, vpc });
       const template = assertions.Template.fromStack(stack);
       template.hasResourceProperties('AWS::DocDB::DBCluster', { DeletionProtection: false });
     });
 
     it('instances is configurable', () => {
-      new DocumentDb(stack, new Namer(['test']), { instances: 25, vpc });
+      new DocumentDB(stack, new Namer(['test']), { instances: 25, vpc });
       const template = assertions.Template.fromStack(stack);
       template.resourceCountIs('AWS::DocDB::DBInstance', 25);
     });
 
     it('instanceType is configurable', () => {
-      new DocumentDb(stack, new Namer(['test']), {
+      new DocumentDB(stack, new Namer(['test']), {
         instanceType: InstanceType.of(InstanceClass.R5, InstanceSize.XLARGE18),
         vpc,
       });
@@ -102,7 +102,7 @@ describe('DocumentDb', () => {
 
     it('kmsKey is configurable', () => {
       const kmsKey = new Key(stack, 'Key');
-      new DocumentDb(stack, new Namer(['test']), { kmsKey, vpc });
+      new DocumentDB(stack, new Namer(['test']), { kmsKey, vpc });
       const template = assertions.Template.fromStack(stack);
       template.hasResourceProperties('AWS::DocDB::DBCluster', {
         KmsKeyId: { 'Fn::GetAtt': [getLogicalId(kmsKey), 'Arn'] },
@@ -111,7 +111,7 @@ describe('DocumentDb', () => {
 
     it('securityGroup is configurable', () => {
       const securityGroup = new SecurityGroup(stack, 'SecurityGroup', { vpc });
-      new DocumentDb(stack, new Namer(['test']), { securityGroup, vpc });
+      new DocumentDB(stack, new Namer(['test']), { securityGroup, vpc });
       const template = assertions.Template.fromStack(stack);
       template.hasResourceProperties('AWS::DocDB::DBCluster', {
         VpcSecurityGroupIds: [{ 'Fn::GetAtt': [getLogicalId(securityGroup), 'GroupId'] }],
