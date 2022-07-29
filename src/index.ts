@@ -13,7 +13,7 @@ import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { Construct } from 'constructs';
 import { Namer } from 'multi-convention-namer';
 
-export interface DocumentDbProps {
+export interface DocumentDBProps {
   /**
    * Backup configuration
    * @default {retention:Duration.days(30)}
@@ -67,13 +67,13 @@ export interface DocumentDbProps {
   readonly vpc: IVpc;
 }
 
-export class DocumentDb extends Construct {
+export class DocumentDB extends Construct {
   public readonly cluster: DatabaseCluster;
   public readonly kmsKey: IKey;
   public readonly secret: DatabaseSecret;
   public readonly securityGroup: ISecurityGroup;
 
-  constructor(scope: Construct, id: Namer, props: DocumentDbProps) {
+  constructor(scope: Construct, id: Namer, props: DocumentDBProps) {
     super(scope, id.pascal);
 
     const dbClusterName = props.dbClusterName ?? id.pascal;
