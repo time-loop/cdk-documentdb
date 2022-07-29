@@ -30,7 +30,7 @@
     "projen": "npx projen"
   },
   "author": {
-    "name": "DevOps Team",
+    "name": "ClickUp",
     "email": "devops@clickup.com",
     "organization": true
   },
@@ -69,6 +69,9 @@
     "aws-cdk-lib": "^2.1.0",
     "constructs": "^10.0.5"
   },
+  "dependencies": {
+    "multi-convention-namer": "^0.1.12"
+  },
   "keywords": [
     "cdk"
   ],
@@ -76,7 +79,7 @@
     "node": ">= 14.18.0"
   },
   "main": "lib/index.js",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
