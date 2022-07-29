@@ -1,5 +1,5 @@
 import { Duration, RemovalPolicy } from 'aws-cdk-lib';
-import { BackupProps, ClusterParameterGroup, DatabaseCluster, DatabaseSecret,  } from 'aws-cdk-lib/aws-docdb';
+import { BackupProps, ClusterParameterGroup, DatabaseCluster, DatabaseSecret } from 'aws-cdk-lib/aws-docdb';
 import {
   InstanceClass,
   InstanceSize,
@@ -13,7 +13,7 @@ import { IKey, Key } from 'aws-cdk-lib/aws-kms';
 import { Construct } from 'constructs';
 import { Namer } from 'multi-convention-namer';
 
-export interface DocDbProps {
+export interface DocumentDbProps {
   /**
    * Backup configuration
    * @default {retention:Duration.days(30)}
@@ -73,7 +73,7 @@ export class DocumentDb extends Construct {
   public readonly secret: DatabaseSecret;
   public readonly securityGroup: ISecurityGroup;
 
-  constructor(scope: Construct, id: Namer, props: DocDbProps) {
+  constructor(scope: Construct, id: Namer, props: DocumentDbProps) {
     super(scope, id.pascal);
 
     const dbClusterName = props.dbClusterName ?? id.pascal;
