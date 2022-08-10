@@ -100,7 +100,7 @@ export class DocumentDB extends Construct {
     this.cluster = new DatabaseCluster(this, 'Database', {
       ...props,
       masterUser: {
-        username: 'admin',
+        username: 'master', // 'admin' is a reserved word, so we can't use it here.
         excludeCharacters: ' ;+%{}' + '@\'"`/\\#', // DMS and BASH problem chars. Keep life as easy as possible for aws_dms.
         secretName: id.addSuffix(['admin']).pascal,
       },
