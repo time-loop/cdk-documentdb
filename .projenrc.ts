@@ -1,7 +1,7 @@
-const { clickupCdk } = require('@time-loop/clickup-projen');
+import { clickupCdk } from '@time-loop/clickup-projen';
 
-const bundledDeps = [];
-const peerDeps = [];
+const bundledDeps: string[] = [];
+const peerDeps: string[] = [];
 
 const project = new clickupCdk.ClickUpCdkConstructLibrary({
   name: '@time-loop/cdk-documentdb',
@@ -12,5 +12,10 @@ const project = new clickupCdk.ClickUpCdkConstructLibrary({
 
   deps: [...bundledDeps, 'multi-convention-namer'],
   devDeps: [...peerDeps, '@time-loop/clickup-projen'],
+  projenrcTs: true,
+
+  author: '', // leverage default
+  authorAddress: '', // leverage default
+  repositoryUrl: '', // leverage default
 });
 project.synth();
