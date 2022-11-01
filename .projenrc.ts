@@ -1,8 +1,5 @@
 import { clickupCdk } from '@time-loop/clickup-projen';
 
-const bundledDeps: string[] = [];
-const peerDeps: string[] = [];
-
 const project = new clickupCdk.ClickUpCdkConstructLibrary({
   name: '@time-loop/cdk-documentdb',
 
@@ -10,8 +7,8 @@ const project = new clickupCdk.ClickUpCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   licensed: true,
 
-  deps: [...bundledDeps, 'multi-convention-namer'],
-  devDeps: [...peerDeps, '@time-loop/clickup-projen'],
+  deps: ['multi-convention-namer'],
+  devDeps: ['@time-loop/clickup-projen'],
   projenrcTs: true,
 
   author: '', // leverage default
