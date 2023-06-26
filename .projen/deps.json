@@ -65,16 +65,12 @@
     },
     {
       "name": "jest-junit",
-      "version": "^13",
+      "version": "^15",
       "type": "build"
     },
     {
       "name": "jest",
       "version": "^27",
-      "type": "build"
-    },
-    {
-      "name": "jsii",
       "type": "build"
     },
     {
@@ -94,12 +90,13 @@
       "type": "build"
     },
     {
-      "name": "json-schema",
+      "name": "jsii",
+      "version": "5.0.*",
       "type": "build"
     },
     {
       "name": "npm-check-updates",
-      "version": "^15",
+      "version": "^16",
       "type": "build"
     },
     {
