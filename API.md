@@ -1,3 +1,6 @@
+[![codecov](https://codecov.io/gh/time-loop/cdk-documentdb/branch/main/graph/badge.svg?token=tcF5AmOusa)](https://codecov.io/gh/time-loop/cdk-documentdb)
+
+# cdk-documentdb
 # API Reference <a name="API Reference" id="api-reference"></a>
 
 ## Constructs <a name="Constructs" id="Constructs"></a>
